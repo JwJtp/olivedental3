@@ -885,59 +885,83 @@ footer {
 
 /* ===== FINAL FIX: About image gallery — kill the green gap + crop reflection ===== */
 
+.about-img-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
 .about-img-block{
-    width:100%;
-    max-width:550px;
-    margin:auto;
-    border-radius:20px;
     overflow:hidden;
-    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
 }
 
-.about-img{
-    display:block;
-    width:100%;
-    height:auto;
-    object-fit:cover;
-}
-
+/* Laptop/Desktop */
 .about-img-block:first-child{
-  aspect-ratio: 16 / 9 !important;
+    grid-column:1 / -1;
+    height:400px;
+}
+
+.about-img-block:nth-child(2),
+.about-img-block:nth-child(3){
+    height:190px;
 }
 
 .about-img{
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center top !important;
-  display: block !important;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
 }
 
-/* "Always Smile" image specifically — crop out the reflection at the bottom */
-
-/* "Always Smile" image — crop reflection on ALL screen sizes */
-/* Always Smile image */
-.about-img-block:nth-child(2){
-    height: 190px !important;   /* Reduce height */
-    aspect-ratio: unset !important;
-    overflow: hidden !important;
-}
-
+/* Crop the "Always Smile" image */
 .about-img-block:nth-child(2) .about-img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
+    object-position:center top;
 }
 
-@media (max-width: 768px){
-  .about-img-block{
-    aspect-ratio: 4 / 3 !important;
-  }
-  .about-img-block:first-child{
-    aspect-ratio: 16 / 10 !important;
-  }
+/* Tablet */
+@media (max-width:1024px){
+
+    .about-img-block:first-child{
+        height:340px;
+    }
+
+    .about-img-block:nth-child(2),
+    .about-img-block:nth-child(3){
+        height:180px;
+    }
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+    .about-img-grid{
+        grid-template-columns:1fr;
+    }
+
+    .about-img-block:first-child{
+        height:300px;
+    }
+
+    .about-img-block:nth-child(2),
+    .about-img-block:nth-child(3){
+        height:220px;
+    }
+}
+
+/* Small phones */
+@media (max-width:480px){
+
+    .about-img-block:first-child{
+        height:280px;
+    }
+
+    .about-img-block:nth-child(2),
+    .about-img-block:nth-child(3){
+        height:200px;
+    }
 }
 
 
