@@ -449,7 +449,16 @@ footer {
     transform:none;
     border-radius:22px;
 }
+.about-img-block:first-child{
+    height:400px;
+}
 
+.about-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
 .hero-img-wrap img{
     width:100%;
     height:100%;
@@ -745,6 +754,41 @@ footer {
     height:180px;
   }
 }
+/* LAPTOP (default already fine) */
+
+.about-img-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+/* TABLET */
+@media (max-width:1024px){
+    .about-img-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .about-img-block:first-child{
+        grid-column:span 2;
+        height:300px;
+    }
+}
+
+/* MOBILE */
+@media (max-width:768px){
+    .about-img-grid{
+        grid-template-columns:1fr;
+    }
+
+    .about-img-block{
+        height:220px;
+    }
+
+    .about-img-block:first-child{
+        grid-column:span 1;
+        height:240px;
+    }
+}
 
 
 }
@@ -876,7 +920,7 @@ footer {
     <img src="images/equip.jpg" alt="Hospital" class="about-img">
 </div>
       <div class="about-img-block">
-    <img src="images/smile2.jpeg" class="about-img">
+    <img src="https://images.unsplash.com/photo-1511766443616-f41c8cadf015?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTMyfHxkZW50aXN0fGVufDB8fDB8fHww" class="about-img">
 </div>
      <div class="about-img-block">
     <img src="images/clinic.jpg" alt="Hospital" class="about-img">
@@ -885,83 +929,50 @@ footer {
 
 /* ===== FINAL FIX: About image gallery — kill the green gap + crop reflection ===== */
 
-.about-img-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
-}
-
 .about-img-block{
-    overflow:hidden;
-    border-radius:20px;
-    box-shadow:0 15px 35px rgba(0,0,0,.12);
+  background: transparent !important;
+  overflow: hidden !important;
+  height: auto !important;
+  aspect-ratio: 4 / 3 !important;
 }
 
-/* Laptop/Desktop */
 .about-img-block:first-child{
-    grid-column:1 / -1;
-    height:400px;
-}
-
-.about-img-block:nth-child(2),
-.about-img-block:nth-child(3){
-    height:190px;
+  aspect-ratio: 16 / 9 !important;
 }
 
 .about-img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center;
-    display:block;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+  display: block !important;
 }
 
-/* Crop the "Always Smile" image */
+/* "Always Smile" image specifically — crop out the reflection at the bottom */
+
+/* "Always Smile" image — crop reflection on ALL screen sizes */
+/* Always Smile image */
+.about-img-block:nth-child(2){
+    height: 190px !important;   /* Reduce height */
+    aspect-ratio: unset !important;
+    overflow: hidden !important;
+}
+
 .about-img-block:nth-child(2) .about-img{
-    object-position:center top;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
 }
 
-/* Tablet */
-@media (max-width:1024px){
-
-    .about-img-block:first-child{
-        height:340px;
-    }
-
-    .about-img-block:nth-child(2),
-    .about-img-block:nth-child(3){
-        height:180px;
-    }
-}
-
-/* Mobile */
-@media (max-width:768px){
-
-    .about-img-grid{
-        grid-template-columns:1fr;
-    }
-
-    .about-img-block:first-child{
-        height:300px;
-    }
-
-    .about-img-block:nth-child(2),
-    .about-img-block:nth-child(3){
-        height:220px;
-    }
-}
-
-/* Small phones */
-@media (max-width:480px){
-
-    .about-img-block:first-child{
-        height:280px;
-    }
-
-    .about-img-block:nth-child(2),
-    .about-img-block:nth-child(3){
-        height:200px;
-    }
+@media (max-width: 768px){
+  .about-img-block{
+    aspect-ratio: 4 / 3 !important;
+  }
+  .about-img-block:first-child{
+    aspect-ratio: 16 / 10 !important;
+  }
 }
 
 
