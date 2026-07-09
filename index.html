@@ -930,10 +930,19 @@ footer {
 /* ===== FINAL FIX: About image gallery — kill the green gap + crop reflection ===== */
 
 .about-img-block{
-  background: transparent !important;
-  overflow: hidden !important;
-  height: auto !important;
-  aspect-ratio: 4 / 3 !important;
+    width:100%;
+    max-width:550px;
+    margin:auto;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+}
+
+.about-img{
+    display:block;
+    width:100%;
+    height:auto;
+    object-fit:cover;
 }
 
 .about-img-block:first-child{
